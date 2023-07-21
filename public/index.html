@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+	</head>
+	<body>
+		<video controls style="width: 100%"></video>
+		<script>
+			var video = document.getElementsByTagName('video')[0];
+			window.vid = video;
+			var videoSrc = '/video/master.m3u8';
+			if (Hls.isSupported()) {
+				var hls = new Hls({
+					debug: true,
+					startLevel: -1,
+				});
+				hls.loadSource(videoSrc);
+				hls.attachMedia(video);
+				window.hls = hls;
+			}
+		</script>
+	</body>
+</html>
